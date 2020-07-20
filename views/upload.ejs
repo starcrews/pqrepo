@@ -1,0 +1,51 @@
+<% include header2 %>
+<body id = "page-top">
+    <nav class = "navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+        <div class = "container">
+            <a class = "navbar-brand js-scroll-trigger" href = "">The PQ Repo</a>
+        
+            <button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class = "navbar-toggler-icon"></span>
+            </button>
+        
+            <div class = "collapse navbar-collapse" id = "navbarResponsive">
+                <ul class = "navbar-nav ml-auto">
+                    <li class = "nav-item">
+                        <a class = "nav-link js-scroll-trigger" href = "/">Home Page</a>
+                    </li>
+                    <li class = "nav-item">
+                        <a class = "nav-link js-scroll-trigger" href = "/download">View Questions</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class = "bg-primary text-white">
+        <div class = "container text-center">
+            <h1>Upload Questions</h1>
+        </div>
+    </header>
+
+    <div class = "wrapper">
+        <div class = "fi le-download">
+            <h3>Please upload the picture of the question</h3>
+            <i class = "fas fa-cloud-upload-alt fa-10x"></i>
+            <br>
+            <br>
+            
+            <form id = 'formone' action = '/api/images?department=<%=department%>&course_code=<%=course_code%>&course_name=<%=course_name%>&year=<%=year%>&page_number=<%=page_number%>' method = "POST" enctype = "multipart/form-data">
+                <input type = 'file' id = 'photo' name = 'image'/>
+                <input type = "submit" name = "submit" id = "submit"/>
+            </form>
+
+            <br>
+            <br>
+            
+            <h4>Note: Inappropriate pictures will be removed by the administrator.</h4>
+        </div>
+    </div>
+    
+    <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    
+<% include footer %>
