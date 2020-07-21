@@ -1,4 +1,4 @@
-const cloudinary = require("cloudinary"),
+const cloudinary = require("cloudinary").v2,
   { CloudinaryStorage } = require("multer-storage-cloudinary"),
   config = require("./keys");
 

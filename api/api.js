@@ -1,7 +1,6 @@
 const express = require("express"),
   multer = require("multer"),
   storage = require("../config/cloudinary"),
-  cloudinary = require("cloudinary").v2,
   api = express.Router(),
   departmentRouter = require("./routers/departmentRouter"),
   downloadRouter = require("./routers/downloadRouter"),
@@ -12,7 +11,6 @@ api.use("/download", downloadRouter);
 api.use("/department", departmentRouter);
 api.use("/upload", uploadRouter);
 api.use("/", indexRouter);
-//app.use( "/api/images", imageUploadRouter );
 
 const parser = multer({ storage: storage });
 
