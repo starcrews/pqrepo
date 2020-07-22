@@ -1,5 +1,5 @@
 exports.displayPage = function (req, res) {
-  var department = req.query.department;
+  /*var department = req.query.department;
   var course_code = req.query.course_code;
   var course_name = req.query.course_name;
   var year = req.query.year;
@@ -12,6 +12,51 @@ exports.displayPage = function (req, res) {
     course_name: course_name,
     year: year,
     page_number: page_number,
+  });
+
+  if (req.query.message != null) {
+    var message = req.query.message;
+  }*/
+
+  res.render("upload.ejs", {
+    courses: [
+      { course: "" },
+      { course: "ACCOUNTING" },
+      { course: "AGRICULTURE" },
+      { course: "ANATOMY" },
+      { course: "BANKING AND FINANCE" },
+      { course: "BIOCHEMISTRY" },
+      { course: "BIOLOGY" },
+      { course: "BUSINESS ADMINISTRATION" },
+      { course: "CHEMISTRY" },
+      { course: "COMPUTER SCIENCE" },
+      { course: "ECONOMICS" },
+      { course: "ENGLISH STUDIES AND FRENCH" },
+      { course: "GEDS" },
+      { course: "HISTORY AND INTERNATIONAL RELATIONS" },
+      { course: "INFORMATION RESOURCE MANAGEMENT" },
+      { course: "INFORMATION TECHNOLOGY" },
+      { course: "INTERNATIONAL LAW AND DIPLOMACY" },
+      { course: "LAW" },
+      { course: "MARKETING" },
+      { course: "MASS COMMUNICATION" },
+      { course: "MATHEMATICS" },
+      { course: "MEDICAL LABORATORY SCIENCE" },
+      { course: "MICROBIOLOGY" },
+      { course: "NURSING" },
+      { course: "NUTRITION AND DIETICS" },
+      { course: "PHYSICS AND ELECTRONICS" },
+      { course: "PHYSIOLOGY" },
+      { course: "POLITICAL SCIENCE" },
+      { course: "PUBLIC ADMINISTRATION" },
+      { course: "PUBLIC HEALTH" },
+      { course: "SOCIAL WORK" },
+      { course: "SOFTWARE ENGINEERING" },
+      { course: "THEOLOGY" },
+      { course: "OTHERS" },
+    ],
+    navigate: "download",
+    nav_title: "View Questions",
   });
 };
 
@@ -141,52 +186,7 @@ exports.putQuestion = function (req, res) {};
 
 exports.editQuestion = function (req, res) {};
 
-exports.displayPage = function (req, res) {
-  if (req.query.message != null) {
-    var message = req.query.message;
-  }
-
-  res.render("../views/uploadDetails.ejs", {
-    courses: [
-      { course: "" },
-      { course: "ACCOUNTING" },
-      { course: "AGRICULTURE" },
-      { course: "ANATOMY" },
-      { course: "BANKING AND FINANCE" },
-      { course: "BIOCHEMISTRY" },
-      { course: "BIOLOGY" },
-      { course: "BUSINESS ADMINISTRATION" },
-      { course: "CHEMISTRY" },
-      { course: "COMPUTER SCIENCE" },
-      { course: "ECONOMICS" },
-      { course: "ENGLISH STUDIES AND FRENCH" },
-      { course: "GEDS" },
-      { course: "HISTORY AND INTERNATIONAL RELATIONS" },
-      { course: "INFORMATION RESOURCE MANAGEMENT" },
-      { course: "INFORMATION TECHNOLOGY" },
-      { course: "INTERNATIONAL LAW AND DIPLOMACY" },
-      { course: "LAW" },
-      { course: "MARKETING" },
-      { course: "MASS COMMUNICATION" },
-      { course: "MATHEMATICS" },
-      { course: "MEDICAL LABORATORY SCIENCE" },
-      { course: "MICROBIOLOGY" },
-      { course: "NURSING" },
-      { course: "NUTRITION AND DIETICS" },
-      { course: "PHYSICS AND ELECTRONICS" },
-      { course: "PHYSIOLOGY" },
-      { course: "POLITICAL SCIENCE" },
-      { course: "PUBLIC ADMINISTRATION" },
-      { course: "PUBLIC HEALTH" },
-      { course: "SOCIAL WORK" },
-      { course: "SOFTWARE ENGINEERING" },
-      { course: "THEOLOGY" },
-      { course: "OTHERS" },
-    ],
-    message: message,
-  });
-
-  /*var message = req.query.message;
+/*var message = req.query.message;
 
     if( message === "success" )
     {
@@ -196,7 +196,7 @@ exports.displayPage = function (req, res) {
     {
         res.render( '../views/uploadDetails.ejs' );
     } */
-  /*var url = req.query.url;
+/*var url = req.query.url;
     var id = req.query.id;
     var upload_date = req.query.upload_date;
 
@@ -208,4 +208,3 @@ exports.displayPage = function (req, res) {
     res.render( '../views/uploadDetails.ejs', { url : url, id : id, upload_date : upload_date } );
 
     //res.redirect( '/imageDetails?url=' + url + '&id=' + id + '&upload_date=' + date )*/
-};

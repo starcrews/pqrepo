@@ -1,8 +1,8 @@
-const express = require( 'express' ),
-    router = express.Router(),
-    uploadController = require( '../controllers/uploadController' );
- 
-router.get( '/', uploadController.displayPage );
+const express = require("express"),
+  router = express.Router(),
+  uploadController = require("../controllers/uploadController");
+
+router.route("/").get(uploadController.displayPage);
 
 /*router.route( '/:id' )
     .post( authenticate, uploadController.putQuestion )

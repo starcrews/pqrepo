@@ -13,12 +13,12 @@ const api = require("./api/api"),
   { check, validationResult } = require("express-validator");
 
 app.set("view engine", "ejs");
-app.set("views", path.resolve(__dirname, "views"));
+app.set("views", "views");
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
-app.use(express.static(path.join(__dirname + "public")));
+app.use(express.static(path.join(__dirname + "/public")));
 app.use(
   express.static(
     "https://cloudinary.com/console/media_library/folders/all/pqrepo"
