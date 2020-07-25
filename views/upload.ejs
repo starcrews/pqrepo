@@ -1,53 +1,109 @@
-<% include header2 %>
+<%- include('./includes/header2.ejs') %>
 
-    <header class = "bg-primary text-white">
-        <div class = "container text-center">
-            <h1>Upload Questions</h1>
-        </div>
-    </header>
+<header class="bg-primary text-white">
+  <div class="container text-center">
+    <h1>Upload Questions</h1>
+  </div>
+</header>
+
+<div class="wrapper">
+  <div class="fi le-download">
+    <br />
+    <h2>Please upload the details of the question</h2>
+    <br />
+    <br />
+
+    <% if( locals.errors ) { %>
+    <ul>
+      <% Object.values( errors ).forEach( function( error ) { %>
+      <li><%= error.msg %></li>
+      <% }); %>
+    </ul>
+    <% } %>
+
+    <form id="formtwo" action="/imageDetails" method="POST">
+      <p>
+        Department:
+        <select id="department" name="department">
+          <% for( var course of courses ) { %>
+          <option value="<%= course.course %>"><%= course.course %></option>
+          <% } %>
+        </select>
+      </p>
+      <p>
+        Course Code:
+        <input
+          type="text"
+          id="course_code"
+          name="course_code"
+          placeholder="Course Code"
+        />
+      </p>
+      <p>
+        Course Name:
+        <input
+          type="text"
+          id="course_name"
+          name="course_name"
+          placeholder="Course Name"
+        />
+      </p>
+      <p>
+        Session:
+        <input type="\d{4}/\d{4}" id="year" name="year" placeholder="Session" />
+      </p>
+      <p>
+        Page Number:
+        <input
+          type="text"
+          id="page_number"
+          name="page_number"
+          placeholder="Page Number"
+        />
+      </p>
+      <input type="file" id="photo" name="image" />
+      <input type="submit" name="submit" id="submit" />
+    </form>
+
+    <br />
+    <br />
 
     <div class="wrapper">
-        <div class="fi le-download">
-            <% if( message == "success" ) { %>
-            <h1>Upload Successful!</h1>
-            <% } %>
-    
-            <br>
-            <h2>Please upload the details of the question</h2>
-            <br>
-            <br>
-    
-            <% if( locals.errors ) { %>
-            <ul>
-                <% Object.values( errors ).forEach( function( error ) { %>
-                <li><%= error.msg %></li>
-                <% }); %>
-            </ul>
-            <% } %>
-    
-            <form id="formtwo" action='/imageDetails' method="POST">
-                <p>Department:
-                    <select id="department" name="department">
-                        <% for( var course of courses ) { %>
-                        <option value='<%= course.course %>'><%= course.course %></option>
-                        <% } %>
-                    </select>
-                </p>
-                <p>Course Code: <input type="text" id="course_code" name="course_code" placeholder="Course Code" /></p>
-                <p>Course Name: <input type="text" id="course_name" name="course_name" placeholder="Course Name" /></p>
-                <p>Session: <input type="\d{4}/\d{4}" id="year" name="year" placeholder="Session" /></p>
-                <p>Page Number: <input type="text" id="page_number" name="page_number" placeholder="Page Number" /></p>
-                <input type = 'file' id = 'photo' name = 'image'/>
-                <input type = "submit" name = "submit" id = "submit"/>
-            </form>
+      <h1 id="register-label">Please Upload a Question</h1>
+      <hr />
 
-            <br>
-            <br>
-            
-            <h4>Note: Inappropriate pictures will be removed by the administrator.</h4>
+      <form class="slides" id="edit-slide">
+        <br />
+        <div>
+          <label>Caption:</label>
+          <input type="text" name="caption" id="caption" />
         </div>
+        <br />
+        <div>
+          <label>Summary:</label>
+          <input type="text" name="summary" id="summary" />
+        </div>
+        <br />
+        <div>
+          <label>Image:</label>
+          <input type="file" name="image" id="fCheck" />
+        </div>
+        <br />
+        <input type="submit" class="edit-slide" value="Save Changes" />
+      </form>
+
+      <form class="slides-delete" id="delete-slide">
+        <br />
+        <input type="submit" class="delete-slide" value="Delete Slide" />
+        <br />
+      </form>
     </div>
-    
-    <script src = "//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-    
-<% include footer %>
+
+    <h4>Note: Inappropriate pictures will be removed by the administrator.</h4>
+  </div>
+</div>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+<script src="/js/uploadScript.js"></script>
+
+<%- include('./includes/footer.ejs') %>
