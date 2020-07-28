@@ -1,9 +1,6 @@
 require("../../db/mongoose");
 
-const { Upload } = require("../models/uploadModel"),
-  { Course } = require("../models/courseModel"),
-  mongoose = require("mongoose"),
-  keys = require("../../config/keys");
+const { Question } = require("../models/questionModel");
 
 //var Downloads = new Upload();
 let departments = [];

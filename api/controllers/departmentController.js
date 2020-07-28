@@ -1,9 +1,6 @@
 require("../../db/mongoose");
 
-const { Upload } = require("../models/uploadModel"),
-  { Course } = require("../models/courseModel"),
-  mongoose = require("mongoose"),
-  keys = require("../../config/keys");
+const { Question } = require("../models/questionModel");
 
 exports.displayDepartment = function (req, res) {
   console.log("Request for department page recieved");
