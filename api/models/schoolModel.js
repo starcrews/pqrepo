@@ -1,6 +1,13 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema;
 
+const departmentSchema = new Schema({
+  department: {
+    type: String,
+    required: true,
+  },
+});
+
 const schoolSchema = new Schema(
   {
     school: {
@@ -9,7 +16,7 @@ const schoolSchema = new Schema(
     },
 
     departments: {
-      type: [String],
+      type: [departmentSchema],
       required: true,
     },
   },

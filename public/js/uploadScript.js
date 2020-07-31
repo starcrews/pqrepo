@@ -1,7 +1,7 @@
 let department = document.getElementById("department"),
   course_code = document.getElementById("course_code"),
   course_name = document.getElementById("course_name"),
-  session = document.getElementById("year"),
+  session = document.getElementById("session"),
   level = document.getElementById("level");
 
 // Uploading a Question

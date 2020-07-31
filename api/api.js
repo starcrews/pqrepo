@@ -2,16 +2,22 @@ const express = require("express"),
   multer = require("multer"),
   storage = require("../config/cloudinary"),
   api = express.Router(),
-  departmentRouter = require("./routers/departmentRouter"),
+  indexRouter = require("./routers/indexRouter"),
   downloadRouter = require("./routers/downloadRouter"),
   uploadRouter = require("./routers/uploadRouter"),
-  indexRouter = require("./routers/indexRouter");
+  schoolRouter = require("./routers/schoolRouter"),
+  departmentRouter = require("./routers/departmentRouter"),
+  levelRouter = require("./routers/levelRouter"),
+  sessionRouter = require("./routers/sessionRouter"),
+  questionRouter = require("./routers/questionRouter");
 
 const parser = multer({ storage: storage });
 
 api.use("/download", downloadRouter);
-api.use("/department", departmentRouter);
 api.use("/upload", uploadRouter);
+api.use("/school", schoolRouter);
+api.use("/department", departmentRouter);
+
 api.use("/", indexRouter);
 
 api.post("/images", parser.array("image"), (req, res) => {
@@ -29,7 +35,7 @@ api.post("/images", parser.array("image"), (req, res) => {
       urls.push(final.join("/"));
     });
 
-    if (urls) {
+    if (urls.length > 0) {
       res.status(200).send({ URLS: urls });
     } else {
       res.status(400).send({ Error: "Operation Failed" });

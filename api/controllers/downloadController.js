@@ -1,28 +1,21 @@
-require("../../db/mongoose");
-
-const { Question } = require("../models/questionModel");
+const { School } = require("../models/schoolModel");
 
 //var Downloads = new Upload();
 let departments = [];
 let questions = [];
 
-exports.displayPage = function (req, res) {
-  console.log("Request for download page recieved");
-
-  /*Upload.find( {}, function( err, image ) {
-        //console.log( image );
-        //questions = image;
-        res.render( '../views/download.ejs', { upload: image } );
-    } ); */
-
-  Course.find({}, function (err, course) {
-    //console.log( course );
-    //departments = course;
-    res.render("../views/download.ejs", { courses: course });
-  });
-
-  /*res.render( '../views/download.ejs', { upload: questions,
-    courses: departments }*/
+exports.displayPage = (req, res) => {
+  School.find()
+    .then((schools) => {
+      res.render("../views/download.ejs", {
+        Schools: schools,
+        navigate: "upload",
+        nav_title: "Upload Questions",
+      });
+    })
+    .catch((errr) => {
+      res.status(400).send({ Error: "Schools not found" });
+    });
 };
 
 /*exports.getAllQuestions = function( req, res ) {

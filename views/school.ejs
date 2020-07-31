@@ -1,7 +1,7 @@
 <%- include('./includes/header2.ejs') %>
 <header class="bg-primary text-white">
   <div class="container text-center">
-    <h1>View Questions</h1>
+    <h1><%= School.school %></h1>
   </div>
 </header>
 
@@ -9,12 +9,12 @@
   <div class="file-download">
     <br />
     <br />
-    <h1 class="text-center">Schools</h1>
+    <h1 class="text-center">Departments</h1>
     <br />
 
-    <% for( sch of Schools ) { %>
+    <% for( sch of School.departments ) { %>
     <li class="list">
-      <b><a href="/school/<%= sch._id %>"><%= sch.school %></a></b>
+      <b><a href="/department/<%= sch._id %>"><%= sch.department %></a></b>
     </li>
     <br />
     <% } %>

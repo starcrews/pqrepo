@@ -1,15 +1,29 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema;
 
+const departmentSchema = new Schema({
+  course: {
+    type: String,
+    required: true,
+  },
+});
+
+const levelSchema = new Schema({
+  level: {
+    type: String,
+    required: true,
+  },
+});
+
 const detailsSchema = new Schema(
   {
     departments: {
-      type: [String],
+      type: [departmentSchema],
       required: true,
     },
 
     levels: {
-      type: [String],
+      type: [levelSchema],
       required: true,
     },
   },
