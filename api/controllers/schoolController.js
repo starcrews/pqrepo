@@ -2,7 +2,6 @@ const { School } = require("../models/schoolModel");
 
 exports.displayPage = (req, res) => {
   const school = req.params.school;
-  console.log(school);
 
   School.findById(school)
     .then((school) => {

@@ -1,0 +1,25 @@
+<%- include('./includes/header2.ejs') %>
+<header class="bg-primary text-white">
+    <div class="container text-center">
+        <h1>Levels</h1>
+    </div>
+</header>
+
+<div class="wrapper">
+    <div class="file-download">
+        <br />
+        <br />
+        <h1 class="text-center">Schools</h1>
+        <br />
+
+        <% for( sch of Schools ) { %>
+        <li class="list">
+            <b><a href="/school/<%= sch._id %>"><%= sch.school %></a></b>
+        </li>
+        <br />
+        <% } %>
+
+        <br />
+    </div>
+</div>
+<%- include('./includes/footer.ejs') %>
