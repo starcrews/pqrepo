@@ -1,7 +1,7 @@
 <%- include('./includes/header2.ejs') %>
 <header class="bg-primary text-white">
   <div class="container text-center">
-    <h1><%= Level %> Level</h1>
+    <h1><%= Department %></h1>
   </div>
 </header>
 
@@ -9,22 +9,19 @@
   <div class="file-download">
     <br />
     <br />
-    <h1 class="text-center">Sessions</h1>
+    <h1 class="text-center">Levels</h1>
     <br />
 
-    <% for( session of Sessions ) { %>
+    <% for( level of Levels ) { %>
     <li class="list">
       <b
-        ><a
-          href="/session?department=<%= Department %>&level=<%= Level %>&session=<%= session%>"
-          ><%= session %></a
+        ><a href="/level?department=<%= Department %>&level=<%= level %>"
+          ><%= level %> Level</a
         ></b
       >
     </li>
     <br />
     <% } %>
-
-    <br />
   </div>
 </div>
 <%- include('./includes/footer.ejs') %>

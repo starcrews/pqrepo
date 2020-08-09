@@ -1,23 +1,36 @@
-require("../../db/mongoose");
-
 const { Question } = require("../models/questionModel");
 
-exports.displayDepartment = function (req, res) {
-  console.log("Request for department page recieved");
+exports.displayDepartment = (req, res) => {
+  const department = req.params.department;
 
-  var course_name = "";
+  Question.find({ department: department })
+    .then((questions) => {
+      let allLevels = questions.map((q) => q.level);
 
-  for (var count = 1; count < req.query.course.length - 1; count++) {
-    course_name += req.query.course[count];
-  }
-  //console.log( course_name );
+      let levels = [];
+      levels[0] = allLevels[0];
+      let check = 0;
 
-  Upload.find({ department: course_name }, function (err, image) {
-    res.render("../views/departments.ejs", {
-      papers: image,
-      course: course_name,
-    });
+      for (let a = 0; a < allLevels.length; a++) {
+        for (let l = 0; l < levels.length; l++) {
+          if (levels[l] == allLevels[a]) {
+            check = 1;
+          }
+        }
 
-    //console.log( image );
-  });
+        if (check == 0) {
+          levels.push(allLevels[a]);
+        }
+
+        check = 0;
+      }
+
+      res.status(200).render("department.ejs", {
+        Levels: levels,
+        Department: department,
+        navigate: "upload",
+        nav_title: "Upload Questions",
+      });
+    })
+    .catch((err) => {});
 };

@@ -14,7 +14,13 @@
 
     <% for( sch of School.departments ) { %>
     <li class="list">
-      <b><a href="/department/<%= sch._id %>"><%= sch.department %></a></b>
+      <b
+        ><!--<a href="/department?sid=<%= School._id %>&did=<%= sch._id %>"
+          ><%= sch.department %></a
+        >--><a href="/department/<%= sch.department %>"
+          ><%= sch.department %></a
+        ></b
+      >
     </li>
     <br />
     <% } %>

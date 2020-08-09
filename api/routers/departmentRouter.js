@@ -1,7 +1,7 @@
-const express = require( 'express' ),
-    router = express.Router(),
-    departmentController = require( '../controllers/departmentController' );
+const express = require("express"),
+  router = express.Router(),
+  departmentController = require("../controllers/departmentController");
 
-router.get( '/', departmentController.displayDepartment );
+router.get("/:department", departmentController.displayDepartment);
 
 module.exports = router;
