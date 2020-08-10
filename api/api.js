@@ -18,7 +18,7 @@ api.use("/upload", uploadRouter);
 api.use("/school", schoolRouter);
 api.use("/department", departmentRouter);
 api.use("/level", levelRouter);
-
+api.use("/session", sessionRouter);
 api.use("/", indexRouter);
 
 api.post("/images", parser.array("image"), (req, res) => {
