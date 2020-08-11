@@ -1,32 +1,32 @@
 {
-    "name": "pqrepo",
-    "version": "1.0.0",
-    "description": "This application is a past question repository",
-    "main": "index.js",
-    "engines": {
-        "node": "10.8.0",
-        "npm": "6.2.0"
-    },
-    "scripts": {
-        "start": "nodemon index.js"
-    },
-    "author": "Taiosquare",
-    "license": "ISC",
-    "dependencies": {
-        "body-parser": "^1.18.3",
-        "cloudinary": "^1.22.0",
-        "connect-flash": "^0.1.1",
-        "dotenv": "^7.0.0",
-        "ejs": "^2.6.1",
-        "express": "^4.16.4",
-        "express-session": "^1.16.1",
-        "express-validator": "^6.2.0",
-        "jsonwebtoken": "^8.5.1",
-        "mongodb": "^3.2.3",
-        "mongoose": "^5.9.28",
-        "multer": "^1.4.1",
-        "multer-storage-cloudinary": "^4.0.0",
-        "nodemon": "^2.0.4",
-        "pdfcrowd": "^4.7.0"
-    }
+  "name": "pqrepo",
+  "version": "2.0.0",
+  "description": "A Past Questions Repository",
+  "main": "index.js",
+  "engines": {
+    "node": "10.8.0",
+    "npm": "6.2.0"
+  },
+  "scripts": {
+    "start": "nodemon src/index.js"
+  },
+  "author": "Taiosquare",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cloudinary": "^1.22.0",
+    "connect-flash": "^0.1.1",
+    "dotenv": "^7.0.0",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "express-session": "^1.16.1",
+    "express-validator": "^6.2.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.2.3",
+    "mongoose": "^5.9.28",
+    "multer": "^1.4.1",
+    "multer-storage-cloudinary": "^4.0.0",
+    "nodemon": "^2.0.4",
+    "pdfcrowd": "^4.7.0"
+  }
 }

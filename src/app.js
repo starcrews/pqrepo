@@ -13,7 +13,7 @@ const api = require("./api/api"),
   { check, validationResult } = require("express-validator");
 
 app.set("view engine", "ejs");
-app.set("views", "views");
+app.set("views", "src/views");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
