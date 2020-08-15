@@ -12,7 +12,7 @@ const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   folder: "pqrepo",
   allowedFormats: ["jpg", "png"],
-  transformation: [{ width: 1000, height: 1000, crop: "limit" }],
+  //transformation: [{ width: 1000, height: 1000, crop: "limit" }],
 });
 
 module.exports = storage;
