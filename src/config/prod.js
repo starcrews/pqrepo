@@ -1,6 +1,6 @@
 module.exports = {
-  mongoURI: process.env.MONGO_URI,
-  cloudinaryCloudName: process.env.CLOUD_NAME,
-  cloudinaryApiKey: process.env.API_KEY,
-  cloudinaryApiSecret: process.env.API_SECRET,
+  mongoURI: process.env.mongoURI,
+  cloudinaryCloudName: process.env.cloudinaryCloudName,
+  cloudinaryApiKey: process.env.cloudinaryApiKey,
+  cloudinaryApiSecret: process.env.cloudinaryApiSecret,
 };
