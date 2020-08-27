@@ -35,7 +35,7 @@ exports.displayPage = (req, res) => {
         "download",
         "View Questions",
         "",
-        "Upload Successful!"
+        ""
       );
     })
     .catch((err) => {
@@ -79,7 +79,7 @@ exports.displaySuccess = (req, res) => {
         "download",
         "View Questions",
         "",
-        "Upload Successful"
+        "Upload Successful!"
       );
     })
     .catch((err) => {
