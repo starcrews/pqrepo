@@ -15,7 +15,8 @@
     <% for( question of Questions ) { %>
     <li class="list">
       <b
-        ><a href="/question?"
+        ><a
+          href="/question?department=<%= Department %>&level=<%= Level %>&session=<%= Session %>&course=<%= question.course_code %>"
           ><%= question.course_name %> (<%= question.course_code %>)</a
         ></b
       >

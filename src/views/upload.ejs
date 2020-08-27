@@ -14,6 +14,16 @@
     <br />
     <br />
 
+    <% if (error != "") { %>
+    <div class="user-message user-message--error"><%= error %></div>
+    <br />
+    <br />
+    <% } %> <% if (success != "") { %>
+    <div class="user-message user-message--error"><%= success %></div>
+    <br />
+    <br />
+    <% } %>
+
     <form id="formtwo" class="upload-question" enctype="multipart/form-data">
       <p>Department:</p>
       <select id="department" name="department">

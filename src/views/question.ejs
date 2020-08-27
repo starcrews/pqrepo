@@ -1,7 +1,7 @@
 <%- include('./includes/header2.ejs') %>
 <header class="bg-primary text-white">
   <div class="container text-center">
-    <h1><%= School.school %></h1>
+    <h1><%= Question[0].course_code %> (<%= Question[0].session %>)</h1>
   </div>
 </header>
 
@@ -9,20 +9,15 @@
   <div class="file-download">
     <br />
     <br />
-    <h1 class="text-center">Departments</h1>
+    <h1 class="text-center">Pages</h1>
     <br />
 
-    <% for( sch of School.departments ) { %>
-    <li class="list">
-      <b
-        ><a href="/department/<%= sch.department %>"
-          ><%= sch.department %></a
-        ></b
-      >
+    <% for (let c = 0; c < Question[0].url.length; c++) { %>
+    <li>
+      <b><a href="<%= Question[0].url[c] %>">Page <%= c + 1 %></a></b>
     </li>
     <br />
     <% } %>
-    <br />
   </div>
 </div>
 <%- include('./includes/footer.ejs') %>

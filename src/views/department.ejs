@@ -7,6 +7,13 @@
 
 <div class="wrapper">
   <div class="file-download">
+    <% if (error != "") { %>
+    <br />
+    <br />
+    <div class="user-message user-message--error"><%= error %></div>
+    <br />
+    <br />
+    <% } else { %>
     <br />
     <br />
     <h1 class="text-center">Levels</h1>
@@ -21,7 +28,7 @@
       >
     </li>
     <br />
-    <% } %>
+    <% } %> <% } %>
   </div>
 </div>
 <%- include('./includes/footer.ejs') %>

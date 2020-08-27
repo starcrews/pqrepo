@@ -36,8 +36,11 @@ uploadQuestion.addEventListener("submit", function (e) {
       })
         .then((response) => response.json())
         .then((rdata) => {
-          console.log(JSON.stringify(rdata.Message));
-          location.reload(true);
+          if (rdata.Message == "Upload Successful") {
+            window.location.href = "/upload/success";
+          } else if (rdata.Message == "Upload Failed") {
+            window.location.href = "/upload/failed";
+          }
         })
         .catch((error) => {
           console.log(error);

@@ -1,8 +1,14 @@
 const mongoose = require("mongoose"),
+  { ObjectId } = require("mongodb"),
   Schema = mongoose.Schema;
 
 const questionSchema = new Schema(
   {
+    _id: {
+      type: ObjectId,
+      required: true,
+    },
+
     department: {
       type: String,
       required: true,

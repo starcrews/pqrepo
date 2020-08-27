@@ -1,5 +1,5 @@
-require("./config/keys");
 require("./db/mongoose");
+require("dotenv").config();
 
 const path = require("path");
 
