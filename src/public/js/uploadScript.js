@@ -2,13 +2,15 @@ let department = document.getElementById("department"),
   course_code = document.getElementById("course_code"),
   course_name = document.getElementById("course_name"),
   session = document.getElementById("session"),
-  level = document.getElementById("level");
+  level = document.getElementById("level"),
+  preloader = document.querySelector(".sk-chase").style;
 
 // Uploading a Question
 const uploadQuestion = document.querySelector(".upload-question");
 
 uploadQuestion.addEventListener("submit", function (e) {
   e.preventDefault();
+  preloader.display = "inline-block";
 
   const formData = new FormData(this);
 
@@ -18,6 +20,7 @@ uploadQuestion.addEventListener("submit", function (e) {
   })
     .then((response) => response.json())
     .then((rdata) => {
+      console.log(rdata);
       const data = {
         department: department.value,
         course_code: course_code.value,
@@ -37,16 +40,31 @@ uploadQuestion.addEventListener("submit", function (e) {
         .then((response) => response.json())
         .then((rdata) => {
           if (rdata.Message == "Upload Successful") {
-            window.location.href = "/upload/success";
+            //location.reload(true);
+            display("Upload Successful!");
           } else if (rdata.Message == "Upload Failed") {
-            window.location.href = "/upload/failed";
+            preloader.display = "none";
+            display("Upload Failed, Try Again");
+          } else if (rdata.Message == "Invalid Values") {
+            preloader.display = "none";
+            display("Invalid Values, Please Correct.");
           }
         })
         .catch((error) => {
-          console.log(error);
+          preloader.display = "none";
+          display("Upload Failed, Try Again");
         });
     })
     .catch((error) => {
-      console.log("Operation Failed");
+      preloader.display = "none";
+      display("Server Error, Try Again");
     });
 });
+
+const display = (message) => {
+  document.querySelector(
+    ".message"
+  ).innerHTML = `<div class="user-message user-message--error">${message}</div>
+              <br />
+              <br />`;
+};

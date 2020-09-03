@@ -1,6 +1,6 @@
 const { School } = require("../models/schoolModel");
 
-exports.displayPage = (req, res) => {
+exports.displaySchoolPage = (req, res) => {
   const school = req.params.school;
 
   School.findById(school)
@@ -11,5 +11,7 @@ exports.displayPage = (req, res) => {
         nav_title: "Upload Questions",
       });
     })
-    .catch((err) => {});
+    .catch((err) => {
+      res.status(404).render("404.ejs", { Message: "Home Page Not Found." });
+    });
 };

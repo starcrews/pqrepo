@@ -19,7 +19,7 @@ let send = (
   });
 };
 
-exports.displayDepartment = (req, res) => {
+exports.displayDepartmentPage = (req, res) => {
   const department = req.params.department;
 
   Question.find({ department: department })

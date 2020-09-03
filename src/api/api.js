@@ -40,7 +40,7 @@ api.post("/images", parser.array("image"), (req, res) => {
     if (urls.length > 0) {
       res.status(200).send({ URLS: urls });
     } else {
-      res.status(400).send({ Error: "Operation Failed" });
+      res.status(400).send({ URLS: "" });
     }
   } catch {
     res.status(500).send({ Error: "Server Error" });

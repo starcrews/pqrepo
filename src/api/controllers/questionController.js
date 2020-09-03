@@ -1,6 +1,6 @@
 const { Question } = require("../models/questionModel");
 
-exports.displayQuestion = (req, res) => {
+exports.displayQuestionPage = (req, res) => {
   const department = req.query.department;
   const level = req.query.level;
   const session = req.query.session;
@@ -19,6 +19,8 @@ exports.displayQuestion = (req, res) => {
       });
     })
     .catch((err) => {
-      res.status(400).send({ Message: "Error" });
+      res
+        .status(404)
+        .render("404.ejs", { Message: "Question Page Not Found." });
     });
 };

@@ -1,6 +1,6 @@
 const { Question } = require("../models/questionModel");
 
-exports.displaySession = (req, res) => {
+exports.displaySessionPage = (req, res) => {
   const department = req.query.department;
   const level = req.query.level;
   const session = req.query.session;

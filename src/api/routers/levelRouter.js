@@ -2,6 +2,6 @@ const express = require("express"),
   router = express.Router(),
   levelController = require("../controllers/levelController");
 
-router.get("/", levelController.displayLevel);
+router.get("/", levelController.displayLevelPage);
 
 module.exports = router;

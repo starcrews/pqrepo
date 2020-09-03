@@ -1,6 +1,6 @@
 const { Question } = require("../models/questionModel");
 
-exports.displayLevel = (req, res) => {
+exports.displayLevelPage = (req, res) => {
   const department = req.query.department;
   const level = req.query.level;
 
@@ -37,6 +37,6 @@ exports.displayLevel = (req, res) => {
       });
     })
     .catch((err) => {
-      res.status(400).send({ Message: "Error" });
+      res.status(404).render("404.ejs", { Message: "Level Page Not Found." });
     });
 };

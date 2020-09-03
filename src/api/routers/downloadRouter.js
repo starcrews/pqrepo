@@ -1,10 +1,7 @@
-const express = require( 'express' ),
-    router = express.Router(),
-    downloadController = require( '../controllers/downloadController' );
+const express = require("express"),
+  router = express.Router(),
+  downloadController = require("../controllers/downloadController");
 
-router.get( '/', downloadController.displayPage );
-
-/*router.route( '/:id' )
-    .get( authenticate, downloadController.fetchQuestion );*/
+router.get("/", downloadController.displaySchoolsPage);
 
 module.exports = router;

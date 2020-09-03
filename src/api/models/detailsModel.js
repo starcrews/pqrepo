@@ -15,6 +15,13 @@ const levelSchema = new Schema({
   },
 });
 
+const sessionSchema = new Schema({
+  session: {
+    type: String,
+    required: true,
+  },
+});
+
 const detailsSchema = new Schema(
   {
     departments: {
@@ -24,6 +31,11 @@ const detailsSchema = new Schema(
 
     levels: {
       type: [levelSchema],
+      required: true,
+    },
+
+    sessions: {
+      type: [sessionSchema],
       required: true,
     },
   },

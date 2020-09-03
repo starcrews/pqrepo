@@ -9,8 +9,7 @@ const express = require("express"),
 const app = express();
 
 const api = require("./api/api"),
-  errorController = require("./api/controllers/error"),
-  { check, validationResult } = require("express-validator");
+  errorController = require("./api/controllers/error");
 
 app.set("view engine", "ejs");
 app.set("views", "src/views");
@@ -27,6 +26,6 @@ app.use(
 
 app.use(api);
 
-app.use(errorController.get404);
+app.use(errorController.get500);
 
 module.exports = { app };

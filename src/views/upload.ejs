@@ -14,15 +14,7 @@
     <br />
     <br />
 
-    <% if (error != "") { %>
-    <div class="user-message user-message--error"><%= error %></div>
-    <br />
-    <br />
-    <% } %> <% if (success != "") { %>
-    <div class="user-message user-message--error"><%= success %></div>
-    <br />
-    <br />
-    <% } %>
+    <div class="message"></div>
 
     <form id="formtwo" class="upload-question" enctype="multipart/form-data">
       <p>Department:</p>
@@ -52,12 +44,11 @@
       <br />
       <br />
       <p>Session:</p>
-      <input
-        type="\d{4}/\d{4}"
-        id="session"
-        name="session"
-        placeholder="Session"
-      />
+      <select id="session" name="session">
+        <% for( session of sessions ) { %>
+        <option value="<%= session.session %>"><%= session.session %></option>
+        <% } %>
+      </select>
       <br />
       <br />
       <p>Level Taken:</p>
@@ -73,6 +64,8 @@
       <br />
       <br />
       <input type="submit" name="submit" id="submit" />
+
+      <%- include('./includes/preloader.ejs') %>
     </form>
     <br />
     <br />

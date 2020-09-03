@@ -2,28 +2,28 @@ const { Question } = require("../models/questionModel"),
   { Details } = require("../models/detailsModel"),
   mongoose = require("mongoose");
 
+const { validationResult } = require("express-validator");
+
 let send = (
   res,
   code,
   page,
   courses,
   levels,
+  sessions,
   navigate,
-  nav_title,
-  error,
-  success
+  nav_title
 ) => {
   return res.status(code).render(page, {
     courses: courses,
     levels: levels,
+    sessions: sessions,
     navigate: navigate,
     nav_title: nav_title,
-    error: error,
-    success: success,
   });
 };
 
-exports.displayPage = (req, res) => {
+exports.displayUploadPage = (req, res) => {
   Details.find()
     .then((details) => {
       send(
@@ -32,10 +32,9 @@ exports.displayPage = (req, res) => {
         "upload.ejs",
         details[0].departments,
         details[0].levels,
+        details[0].sessions,
         "download",
-        "View Questions",
-        "",
-        ""
+        "View Questions"
       );
     })
     .catch((err) => {
@@ -44,65 +43,28 @@ exports.displayPage = (req, res) => {
 };
 
 exports.postQuestion = (req, res) => {
-  const newQuestion = new Question({
-    _id: mongoose.Types.ObjectId(),
-    department: req.body.department,
-    course_code: req.body.course_code,
-    course_name: req.body.course_name,
-    session: req.body.session,
-    level: req.body.level,
-    url: req.body.image,
-  });
+  const errors = validationResult(req);
 
-  newQuestion
-    .save()
-    .then((savedObject) => {
-      res.status(200).send({ Message: "Upload Successful" });
-    })
-    .catch((err) => {
-      res.status(500).render("500.ejs", {
-        Error:
-          "An error occurred while trying to save the question, please try again",
+  if (!errors.isEmpty()) {
+    res.status(400).send({ Message: "Invalid Values" });
+  } else {
+    const newQuestion = new Question({
+      _id: mongoose.Types.ObjectId(),
+      department: req.body.department,
+      course_code: req.body.course_code,
+      course_name: req.body.course_name,
+      session: req.body.session,
+      level: req.body.level,
+      url: req.body.image,
+    });
+
+    newQuestion
+      .save()
+      .then((savedObject) => {
+        res.status(200).send({ Message: "Upload Successful" });
+      })
+      .catch((err) => {
+        res.status(400).send({ Message: "Upload Failed" });
       });
-    });
-};
-
-exports.displaySuccess = (req, res) => {
-  Details.find()
-    .then((details) => {
-      send(
-        res,
-        201,
-        "upload.ejs",
-        details[0].departments,
-        details[0].levels,
-        "download",
-        "View Questions",
-        "",
-        "Upload Successful!"
-      );
-    })
-    .catch((err) => {
-      res.status(404).send("404.ejs", { Message: "Upload Page not found." });
-    });
-};
-
-exports.displayFailed = (req, res) => {
-  Details.find()
-    .then((details) => {
-      send(
-        res,
-        201,
-        "upload.ejs",
-        details[0].departments,
-        details[0].levels,
-        "download",
-        "View Questions",
-        "Upload Failed, Please Try Again.",
-        ""
-      );
-    })
-    .catch((err) => {
-      res.status(404).send("404.ejs", { Message: "Upload Page not found." });
-    });
+  }
 };
