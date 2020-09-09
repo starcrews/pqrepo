@@ -13,7 +13,7 @@ router
       body("course_name").trim().not().isEmpty(),
       body("session").trim(),
       body("level").trim(),
-      body("image").trim().not().isEmpty().isURL(),
+      body("image").not().isEmpty(),
     ],
     uploadController.postQuestion
   );

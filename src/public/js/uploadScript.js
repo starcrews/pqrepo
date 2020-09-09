@@ -3,6 +3,7 @@ let department = document.getElementById("department"),
   course_name = document.getElementById("course_name"),
   session = document.getElementById("session"),
   level = document.getElementById("level"),
+  fCheck = document.querySelector(".fCheck"),
   preloader = document.querySelector(".sk-chase").style;
 
 // Uploading a Question
@@ -20,7 +21,6 @@ uploadQuestion.addEventListener("submit", function (e) {
   })
     .then((response) => response.json())
     .then((rdata) => {
-      console.log(rdata);
       const data = {
         department: department.value,
         course_code: course_code.value,
@@ -40,7 +40,15 @@ uploadQuestion.addEventListener("submit", function (e) {
         .then((response) => response.json())
         .then((rdata) => {
           if (rdata.Message == "Upload Successful") {
-            //location.reload(true);
+            preloader.display = "none";
+
+            department.value = "ACCOUNTING";
+            course_code.value = "";
+            course_name.value = "";
+            session.value = "2011/2012";
+            level.value = "100";
+            fCheck.value = "";
+
             display("Upload Successful!");
           } else if (rdata.Message == "Upload Failed") {
             preloader.display = "none";

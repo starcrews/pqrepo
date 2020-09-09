@@ -58,6 +58,8 @@ exports.postQuestion = (req, res) => {
       url: req.body.image,
     });
 
+    console.log(newQuestion);
+
     newQuestion
       .save()
       .then((savedObject) => {
