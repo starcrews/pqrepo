@@ -9,12 +9,12 @@
   <div class="file-download">
     <br />
     <br />
-    <h1 class="text-center">Pages</h1>
+    <h1 class="text-center"><%= format %></h1>
     <br />
 
     <% for (let c = 0; c < Question[0].url.length; c++) { %>
     <li>
-      <b><a href="<%= Question[0].url[c] %>">Page <%= c + 1 %></a></b>
+      <b><a href="<%= Question[0].url[c] %>"><%= count%> <%= c + 1 %></a></b>
     </li>
     <br />
     <% } %>

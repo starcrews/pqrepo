@@ -12,7 +12,7 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   folder: "pqrepo",
-  allowedFormats: ["jpg", "png"],
+  allowedFormats: ["jpg", "png", "pdf", "raw"],
 });
 
 module.exports = storage;

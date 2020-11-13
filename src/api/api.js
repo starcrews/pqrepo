@@ -28,13 +28,19 @@ api.post("/images", parser.array("image"), (req, res) => {
 
     const urls = [];
 
-    events.map((e) => {
-      const url = e.path.split("/");
-      const first = url.slice(0, 6);
-      const second = url.slice(6);
-      const final = [...first, "f_auto,q_auto", ...second];
+    // events.map((e) => {
+    //   const url = e.path.split("/");
+    //   const first = url.slice(0, 6);
+    //   const second = url.slice(6);
+    //   const final = [...first, "f_auto,q_auto", ...second];
 
-      urls.push(final.join("/"));
+    //   urls.push(final.join("/"));
+    // });
+
+    events.map((e) => {
+      const url = e.path;
+
+      urls.push(url);
     });
 
     if (urls.length > 0) {
