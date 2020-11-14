@@ -9,7 +9,7 @@ exports.displayQuestionPage = (req, res) => {
   Question.where("department", department)
     .where("level", level)
     .where("session", session)
-    .where("course_code", course)
+    .where("course_name", course)
     .exec()
     .then((question) => {
       let format = "", count = "";
