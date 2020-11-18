@@ -22,7 +22,7 @@ let send = (
 exports.displayDepartmentPage = (req, res) => {
   const department = req.params.department;
 
-  Question.find({ department: department })
+  Question.find({ department: { $regex: department }})
     .then((questions) => {
       if (questions.length == 0) {
         send(

@@ -5,7 +5,7 @@ exports.displaySessionPage = (req, res) => {
   const level = req.query.level;
   const session = req.query.session;
 
-  Question.where("department", department)
+  Question.where("department", { $regex: department })
     .where("level", level)
     .where("session", session)
     .exec()

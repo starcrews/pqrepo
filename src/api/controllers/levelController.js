@@ -4,7 +4,7 @@ exports.displayLevelPage = (req, res) => {
   const department = req.query.department;
   const level = req.query.level;
 
-  Question.where("department", department)
+  Question.where("department", { $regex: department })
     .where("level", level)
     .exec()
     .then((questions) => {

@@ -4,12 +4,14 @@ exports.displayQuestionPage = (req, res) => {
   const department = req.query.department;
   const level = req.query.level;
   const session = req.query.session;
-  const course = req.query.course;
+  const name = req.query.name;
+  const code = req.query.code;
 
-  Question.where("department", department)
+  Question.where("department", { $regex: department })
     .where("level", level)
     .where("session", session)
-    .where("course_name", course)
+    .where("course_name", { $regex: name })
+    .where("course_code", code)
     .exec()
     .then((question) => {
       let format = "", count = "";
